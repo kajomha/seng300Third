@@ -246,9 +246,10 @@ public class CountJavaTypes {
                 @Override
                 public boolean visit(ArrayAccess node) {
                     
-                        
-                    String nodename = node.getArray().resolveTypeBinding().getQualifiedName();
-                    updateTable(nodename, "Reference");
+                    if (node.getArray().resolveTypeBinding() != null) {  
+                    	String nodename = node.getArray().resolveTypeBinding().getQualifiedName();
+                    	updateTable(nodename, "Reference");
+                    }
                         
                     
                     return false;
