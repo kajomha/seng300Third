@@ -2,6 +2,7 @@
 
 import java.io.BufferedReader;
 import java.io.*;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.JarURLConnection;
@@ -9,12 +10,15 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Enumeration;
+import java.util.HashSet;
 import java.util.Hashtable;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.Set;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
+//import javax.swing.JFileChooser;
 import org.eclipse.jdt.core.JavaCore;
 import org.eclipse.jdt.core.dom.AST;
 import org.eclipse.jdt.core.dom.ASTParser;
@@ -24,9 +28,12 @@ import org.eclipse.jdt.core.dom.AnonymousClassDeclaration;
 import org.eclipse.jdt.core.dom.ArrayAccess;
 import org.eclipse.jdt.core.dom.CompilationUnit;
 import org.eclipse.jdt.core.dom.EnumDeclaration;
+import org.eclipse.jdt.core.dom.FieldDeclaration;
 import org.eclipse.jdt.core.dom.SimpleName;
 import org.eclipse.jdt.core.dom.SimpleType;
+import org.eclipse.jdt.core.dom.Type;
 import org.eclipse.jdt.core.dom.TypeDeclaration;
+import org.eclipse.jdt.core.dom.VariableDeclarationFragment;
 public class CountJavaTypes {
     
      public static Hashtable<String, int[]> table = new Hashtable<String, int[]>();
@@ -162,7 +169,7 @@ public class CountJavaTypes {
                 //Visits Class and Interface declaration, i.e. the assign1 class.
                 public boolean visit(TypeDeclaration node) {
                     
-                    String nodename = node.resolveBinding().getQualifiedName();
+                    String nodename = node.getName().getFullyQualifiedName();
                     
                     //System.out.println("Type Declaration: " + nodename);
                     
@@ -213,7 +220,7 @@ public class CountJavaTypes {
                     
                     if (node.resolveBinding() != null) {
                         
-                        String nodename = node.resolveBinding().getQualifiedName();
+                        String nodename = node.resolveBinding().getBinaryName();
                         updateTable(nodename, "Reference");
                     }
                     
@@ -222,8 +229,8 @@ public class CountJavaTypes {
                 
                 public boolean visit(AnonymousClassDeclaration node) {
                     
+                    
                     if (node.resolveBinding() != null) {
-
                         
                         // MAY NEED TO BE CHANGED!
                         // anonymous classes don't have names, obviously, which complicates counting
@@ -233,7 +240,6 @@ public class CountJavaTypes {
                         // but I don't know if that's how Prof. Walker would want them counted
                         
                         updateTable("Anonymous", "Declaration");
-        				
                         
                     }
                 
@@ -300,7 +306,7 @@ public class CountJavaTypes {
              String s = elements.nextElement();
              int[] a = table.get(s);
              
-             System.out.println(s +": Declarations found: " + a[0] + "; references found: " + a[1] + ".");
+             System.out.println(s +". Declarations found: " + a[0] + "; references found: " + a[1] + ".");
              
          }
          
