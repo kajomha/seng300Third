@@ -1,4 +1,3 @@
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
@@ -39,8 +38,11 @@ public class CountJavaTypes {
          
          //Boolean to check if directory has a .java file
          boolean no_file = true;
+         List[] declaredClasses = new List[2];
+         List<String> nested = new ArrayList<>();
+         List<String> local = new ArrayList<>();
          
-         //Print confirmations ofreceivedd input
+         //Print confirmations of receivedd input
          System.out.println("You have selected the following directory:\n\t" + pathname + "\n");
          
          //Open the directory to read files from
@@ -88,13 +90,15 @@ public class CountJavaTypes {
                          }
                                                  
                          no_file = false;
-                         parse(jarcode,pathname);
+                         
+                         declaredClasses = parse(jarcode,pathname,declaredClasses,nested,local);
                      
                          reader.close();
                          
                      }
                  }
            }
+           
              
              
          }
@@ -115,7 +119,7 @@ public class CountJavaTypes {
                      //Use scanner to read code from file. Stores whole doc in a string
                      String code = new Scanner(list.get(i)).useDelimiter("\\A").next();
                      // Parse the given code; this method will update the hashtable
-                     parse(code, pathname);
+                     declaredClasses = parse(code, pathname,declaredClasses,nested,local);
 
                  }
              }
@@ -127,13 +131,13 @@ public class CountJavaTypes {
          }
          
          else {
-             reportTable();
+             reportTable(declaredClasses);
          }
          
       }  
      
      //Parse method
-     public static void parse(String str, String pathname) {
+     public static List[] parse(String str, String pathname, List[] declaredClasses, List<String> nested, List<String> local) {
          
          //Create AST Parser
             
@@ -159,6 +163,7 @@ public class CountJavaTypes {
             Hashtable<String, int[]> collection = new Hashtable<String, int[]>();
             
             final CompilationUnit cu = (CompilationUnit) parser.createAST(null);
+            
      
             //Visit string
             cu.accept(new ASTVisitor() {
@@ -169,6 +174,12 @@ public class CountJavaTypes {
                     String nodename = node.resolveBinding().getQualifiedName();
                     
                     //System.out.println("Type Declaration: " + nodename);
+                    
+                    if (node.resolveBinding().isNested()) {
+                    	nested.add(nodename);
+                    }else {
+                    	local.add(nodename);
+                    }
                     
                     updateTable(nodename, "Declaration");
                     
@@ -182,6 +193,12 @@ public class CountJavaTypes {
                     
                     //System.out.println("Annotation: " + nodename);
                     
+                    if (node.resolveBinding().isNested()) {
+                    	nested.add(nodename);
+                    }else {
+                    	local.add(nodename);
+                    }
+                    
                     updateTable(nodename, "Declaration");
                     
                     return false;               
@@ -193,6 +210,12 @@ public class CountJavaTypes {
                     String nodename = node.getName().getFullyQualifiedName();
                     
                     //System.out.println("Enumeration: " + nodename);
+                    
+                    if (node.resolveBinding().isNested()) {
+                    	nested.add(nodename);
+                    }else {
+                    	local.add(nodename);
+                    }
                     
                     updateTable(nodename, "Declaration");
                     
@@ -236,6 +259,7 @@ public class CountJavaTypes {
                         // but I don't know if that's how Prof. Walker would want them counted
                         
                         updateTable("Anonymous", "Declaration");
+                        //System.out.println("Anonymous");
         				
                         
                     }
@@ -253,12 +277,15 @@ public class CountJavaTypes {
                         
                     
                     return false;
-}
+                }
                 
             });
-            //Return updated counters
-            // return collection;
-        }
+            
+            declaredClasses[0] = nested;
+            declaredClasses[1] = local;
+            
+            return declaredClasses;
+     }
      
      // takes the name we got from a node, and a string telling us whether to increment Reference or Declaration count
      
@@ -293,7 +320,7 @@ public class CountJavaTypes {
      
      // displays all of the information stored in our table
      
-     public static void reportTable () {
+     public static void reportTable (List[] declaredClasses) {
          
          // use an enumeration of keys to find the type names, and then use the keys to get the counts
          
@@ -304,11 +331,41 @@ public class CountJavaTypes {
              String s = elements.nextElement();
              int[] a = table.get(s);
              
-            System.out.println(s +": Declarations found: " + a[0] + "; references found: " + a[1] + ".");
+             //Print Statement from Iteration 2
+             //System.out.println(s +": Declarations found: " + a[0] + "; references found: " + a[1] + ".");
+             
+             
+             //Use the following for analysis of repos
+             //Comment/Uncomment chunks based on what you need to test
+             //I recommend using a line counter to count # of declarations and the sum calculator for # of references
+             
+             //Get list of with names of Listed and Local Types
+             List<String>nested = declaredClasses[0];
+             List<String>local = declaredClasses[1];
+             
+//             //Look for Nested Type Declarations
+//             if (nested.contains(s)) {
+//            	 System.out.println(s);
+//             }
+//             
+//             //Look for Local Type Declarations
+//             if (local.contains(s)) {
+//            	 System.out.println(s);
+//             }
+
+             
+//             //Look for # of references to local/nested types
+//             if (a[0] != 0 && a[1] != 0) {
+//            	 System.out.println(a[1]);
+//             }
+//             
+//             //Look for # of references to other types
+//             if (a[0] == 0 && a[1] != 0) {
+//            	 System.out.println(a[1]);
+//             }
+             
              
          }
-         
-         
      }
      
 }
