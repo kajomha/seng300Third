@@ -116,6 +116,11 @@ public class CountJavaTypes {
                      //Set boolean to show .java file was found
                      no_file = false;
                      
+                     
+                     //The following commented out print line is used to find the pathname of a file
+                     //incase that fath contains foreign symbols and scanner crashes due to it
+                     //System.out.println(list.get(i).getAbsolutePath());
+                     
                      //Use scanner to read code from file. Stores whole doc in a string
                      String code = new Scanner(list.get(i)).useDelimiter("\\A").next();
                      // Parse the given code; this method will update the hashtable
@@ -343,22 +348,25 @@ public class CountJavaTypes {
              List<String>nested = declaredClasses[0];
              List<String>local = declaredClasses[1];
              
+             
 //             //Look for Nested Type Declarations
 //             if (nested.contains(s)) {
 //            	 System.out.println(s);
 //             }
-//             
+             
 //             //Look for Local Type Declarations
 //             if (local.contains(s)) {
 //            	 System.out.println(s);
 //             }
+             
 
              
 //             //Look for # of references to local/nested types
 //             if (a[0] != 0 && a[1] != 0) {
 //            	 System.out.println(a[1]);
 //             }
-//             
+             
+             
 //             //Look for # of references to other types
 //             if (a[0] == 0 && a[1] != 0) {
 //            	 System.out.println(a[1]);
