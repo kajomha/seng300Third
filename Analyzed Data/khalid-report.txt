@@ -1,0 +1,177 @@
+***************Games***************
+
+1. Terasology - https://github.com/MovingBlocks/Terasology
+
+    Nested Types Declared: 509
+    Local Types Declared: 2158
+    Anonymous Types Declared: 205
+    Local/Nested Types Referenced : 6466
+    Other Types Referenced : 57325
+    
+2. Pixel Dungeon - https://github.com/watabou/pixel-dungeon
+
+    Nested Types Declared: 149
+    Local Types Declared: 505
+    Anonymous Types Declared: 166
+    Local/Nested Types Referenced : 528
+    Other Types Referenced : 14474
+
+3. 2D Boat Game - https://github.com/markburns/Java-Boat-Game
+
+    Nested Types Declared: 1
+    Local Types Declared: 30
+    Anonymous Types Declared: 28
+    Local/Nested Types Referenced : 24
+    Other Types Referenced : 2162
+
+4. Snake - https://github.com/hexadeciman/Snake
+
+    Nested Types Declared: 0
+    Local Types Declared: 7
+    Anonymous Types Declared: 0
+    Local/Nested Types Referenced : 4
+    Other Types Referenced : 161
+    
+5. Go-game - https://github.com/Dean151/Go-game
+
+    Nested Types Declared: 0
+    Local Types Declared: 25
+    Anonymous Types Declared: 6
+    Local/Nested Types Referenced : 34
+    Other Types Referenced : 1246
+
+6. Pretend You're Xyzzy - https://github.com/ajanata/PretendYoureXyzzy
+
+    Nested Types Declared: 51
+    Local Types Declared: 86
+    Anonymous Types Declared: 16
+    Local/Nested Types Referenced : 50
+    Other Types Referenced : 2251
+
+7. TerraLegion - https://github.com/jmrapp1/TerraLegion
+
+    Nested Types Declared: 17
+    Local Types Declared: 188
+    Anonymous Types Declared: 0
+    Local/Nested Types Referenced : 266
+    Other Types Referenced : 9622
+
+8. Memory Game - https://github.com/sromku/memory-game
+
+    Nested Types Declared: 5
+    Local Types Declared: 45
+    Anonymous Types Declared: 27
+    Local/Nested Types Referenced : 34
+    Other Types Referenced : 757
+
+9. Sprout Life - https://github.com/ShprAlex/SproutLife﻿
+
+    Nested Types Declared: 11
+    Local Types Declared: 85
+    Anonymous Types Declared: 37
+    Local/Nested Types Referenced : 43
+    Other Types Referenced : 4654
+
+10. JSettlers - https://github.com/jsettlers/settlers-remake
+
+    Nested Types Declared: 230
+    Local Types Declared: 1222
+    Anonymous Types Declared: 142
+    Local/Nested Types Referenced : 977
+    Other Types Referenced : 37671
+    
+
+***************Game Engines***************
+
+1. 2D Game Engine - https://github.com/vanZeben/2D-Game-Engine
+
+    Nested Types Declared: 3
+    Local Types Declared: 23
+    Anonymous Types Declared: 0
+    Local/Nested Types Referenced : 18
+    Other Types Referenced : 1050
+    
+2. Spout - https://github.com/SpoutDev/Spout
+
+    Nested Types Declared: 143
+    Local Types Declared: 1031
+    Anonymous Types Declared: 45
+    Local/Nested Types Referenced : 1252
+    Other Types Referenced : 42009
+
+3. jMonkeyEngine - https://github.com/jMonkeyEngine/jmonkeyengine
+
+    Nested Types Declared: 982
+    Local Types Declared: 1688
+    Anonymous Types Declared: 367
+    Local/Nested Types Referenced : 4954
+    Other Types Referenced : 125442
+
+4. SionCore - https://github.com/saltares/sioncore
+
+    Nested Types Declared: 338
+    Local Types Declared: 689
+    Anonymous Types Declared: 173
+    Local/Nested Types Referenced : 2803
+    Other Types Referenced : 93669
+
+5. Hermes - https://github.com/rdlester/hermes
+
+    Nested Types Declared: 21
+    Local Types Declared: 57
+    Anonymous Types Declared: 0
+    Local/Nested Types Referenced : 767
+    Other Types Referenced : 3149
+
+6. Silence Engine - https://github.com/sriharshachilakapati/SilenceEngine
+
+    Nested Types Declared: 73
+    Local Types Declared: 293
+    Anonymous Types Declared: 0
+    Local/Nested Types Referenced : 980
+    Other Types Referenced : 13134
+
+7. Lion Engine - https://github.com/b3dgs/lionengine
+
+    Nested Types Declared: 52
+    Local Types Declared: 815
+    Anonymous Types Declared: 63
+    Local/Nested Types Referenced : 482
+    Other Types Referenced : 22816
+
+8. OpenRTS - https://github.com/benoit-dumas/OpenRTS
+
+    Nested Types Declared: 19
+    Local Types Declared: 236
+    Anonymous Types Declared: 0
+    Local/Nested Types Referenced : 406
+    Other Types Referenced : 9568
+
+9. BDX - https://github.com/GoranM/bdx
+
+    Nested Types Declared: 102
+    Local Types Declared: 321
+    Anonymous Types Declared: 63
+    Local/Nested Types Referenced : 1611
+    Other Types Referenced : 42920
+
+10. LITIengine - https://github.com/gurkenlabs/litiengine
+
+    Nested Types Declared: 47
+    Local Types Declared: 395
+    Anonymous Types Declared: 29
+    Local/Nested Types Referenced : 354
+    Other Types Referenced : 20967
+
+
+
+
+
+
+
+
+
+
+
+
+
