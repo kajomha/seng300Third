@@ -1,0 +1,73 @@
+Repo Name: Automon
+Nested Types Declared: 10
+Local Types Declared: 67
+Anonymous Types Declared: 1
+Aforementioned Types Referenced: 31
+Other Types Referenced: 1117
+
+Repo Name: awesome-java-leetcode
+Nested Types Declared: 0
+Local Types Declared: 65
+Anonymous Types Declared: 1
+Aforementioned Types Referenced: 140
+Other Types Referenced: 1860
+(Note: Due to existence of foreign language symbols in the comments of some .java files, the commented line needed to be removed to run tool)
+(Files are the three inside: awesome-java-leetcode\src\com\blankj\structure)
+
+Repo Name: bootique
+Nested Types Declared: 179
+Local Types Declared: 221
+Anonymous Types Declared: 42
+Aforementioned Types Referenced: 750
+Other Types Referenced: 3821
+
+Repo Name: Chronicle-Map
+Nested Types Declared: 127
+Local Types Declared: 380
+Anonymous Types Declared: 39
+Aforementioned Types Referenced: 477
+Other Types Referenced: 19040
+
+Repo Name: gumshoe
+Nested Types Declared: 35
+Local Types Declared: 102
+Anonymous Types Declared: 18
+Aforementioned Types Referenced: 156
+Other Types Referenced: 5185
+
+Repo Name: jvm-tools
+Nested Types Declared: 240
+Local Types Declared: 365
+Anonymous Types Declared: 60
+Aforementioned Types Referenced: 1045
+Other Types Referenced: 20035
+
+Repo Name: leakcanary
+Nested Types Declared: 17
+Local Types Declared: 56
+Anonymous Types Declared: 30
+Aforementioned Types Referenced: 110
+Other Types Referenced: 1226
+
+Repo Name: strman-java
+Nested Types Declared: 0
+Local Types Declared: 3
+Anonymous Types Declared: 2
+Aforementioned Types Referenced: 0
+Other Types Referenced: 774
+
+
+Repo Name: tablesaw
+Nested Types Declared: 21
+Local Types Declared: 309
+Anonymous Types Declared: 46
+Aforementioned Types Referenced: 52
+Other Types Referenced: 9660
+
+
+Repo Name: XLearning
+Nested Types Declared: 14
+Local Types Declared: 50
+Anonymous Types Declared: 25
+Aforementioned Types Referenced: 64
+Other Types Referenced: 2786
