@@ -118,7 +118,8 @@ public class CountJavaTypes {
                      
                      
                      //The following commented out print line is used to find the pathname of a file
-                     //incase that fath contains foreign symbols and scanner crashes due to it
+                     //incase that path contains foreign symbols and scanner crashes due to it
+-                    //Use it when you get a java.util.NoSuchElementException in the Scanner
                      //System.out.println(list.get(i).getAbsolutePath());
                      
                      //Use scanner to read code from file. Stores whole doc in a string
