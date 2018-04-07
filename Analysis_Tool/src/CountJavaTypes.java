@@ -331,6 +331,12 @@ public class CountJavaTypes {
          
          Enumeration<String> elements = table.keys();
          
+         int nestedCount = 0;
+         int localCount = 0;
+         int anonymousCount = 0;
+         int thisReferenceCount = 0;
+         int otherReferenceCount = 0;
+         
          while(elements.hasMoreElements()) {
              
              String s = elements.nextElement();
@@ -341,39 +347,48 @@ public class CountJavaTypes {
              
              
              //Use the following for analysis of repos
-             //Comment/Uncomment chunks based on what you need to test
-             //I recommend using a line counter to count # of declarations and the sum calculator for # of references
-             
+
              //Get list of with names of Listed and Local Types
              List<String>nested = declaredClasses[0];
              List<String>local = declaredClasses[1];
              
              
-//             //Look for Nested Type Declarations
-//             if (nested.contains(s)) {
-//            	 System.out.println(s);
-//             }
+             //Look for Nested Type Declarations
+             if (nested.contains(s)) {
+            	 nestedCount++;
+            	 
+             }
              
-//             //Look for Local Type Declarations
-//             if (local.contains(s)) {
-//            	 System.out.println(s);
-//             }
+             //Look for Local Type Declarations
+             if (local.contains(s)) {
+            	 localCount++;
+             }
+             
+             if (s == "Anonymous") {
+            	 anonymousCount = a[0];
+             }
              
 
              
-//             //Look for # of references to local/nested types
-//             if (a[0] != 0 && a[1] != 0) {
-//            	 System.out.println(a[1]);
-//             }
+             //Look for # of references to local/nested types
+             if (a[0] != 0 && a[1] != 0) {
+            	 thisReferenceCount = thisReferenceCount + a[1];
+             }
              
              
-//             //Look for # of references to other types
-//             if (a[0] == 0 && a[1] != 0) {
-//            	 System.out.println(a[1]);
-//             }
+             //Look for # of references to other types
+             if (a[0] == 0 && a[1] != 0) {
+            	 otherReferenceCount = otherReferenceCount + a[1];
+             }
              
              
          }
+         //Print Results
+         System.out.println("Nested Types Declared: " + nestedCount);
+         System.out.println("Local Types Declared: " + localCount);
+         System.out.println("Anonymous Types Declared: " + anonymousCount);
+         System.out.println("Local/Nested Types Referenced : " + thisReferenceCount);
+         System.out.println("Other Types Referenced : " + otherReferenceCount);
      }
      
 }
