@@ -324,10 +324,10 @@ public class CountJavaTypes {
                     if (node.getArray().resolveTypeBinding() != null) {  
                     	String nodename = node.getArray().resolveTypeBinding().getQualifiedName();
                     	
-                    	if (node.resolveTypeBinding().isNested()) {
+                    	if (node.getArray().resolveTypeBinding().isNested()) {
                         	nestedrefs.add(nodename);
                         }
-                        	if (node.resolveTypeBinding().isLocal()) {
+                        	if (node.getArray().resolveTypeBinding().isLocal()) {
                         	localrefs.add(nodename);
                         }
                         	
