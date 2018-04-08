@@ -38,9 +38,12 @@ public class CountJavaTypes {
          
          //Boolean to check if directory has a .java file
          boolean no_file = true;
-         List[] declaredClasses = new List[2];
+         List[] declaredClasses = new List[5];
          List<String> nested = new ArrayList<>();
          List<String> local = new ArrayList<>();
+         List<String> nestedrefs = new ArrayList<>();
+         List<String> localrefs = new ArrayList<>();
+         List<String> total = new ArrayList<>();
          
          //Print confirmations of receivedd input
          System.out.println("You have selected the following directory:\n\t" + pathname + "\n");
@@ -91,7 +94,7 @@ public class CountJavaTypes {
                                                  
                          no_file = false;
                          
-                         declaredClasses = parse(jarcode,pathname,declaredClasses,nested,local);
+                         declaredClasses = parse(jarcode,pathname,declaredClasses,nested,local,nestedrefs,localrefs,total);
                      
                          reader.close();
                          
@@ -118,8 +121,7 @@ public class CountJavaTypes {
                      
                      
                      //The following commented out print line is used to find the pathname of a file
-                     //incase that path contains foreign symbols and scanner crashes due to it
--                    //Use it when you get a java.util.NoSuchElementException in the Scanner
+                     //incase that fath contains foreign symbols and scanner crashes due to it
                      //System.out.println(list.get(i).getAbsolutePath());
                      
                      //Use scanner to read code from file. Stores whole doc in a string
@@ -132,7 +134,7 @@ public class CountJavaTypes {
                      
  					 scanner.close();
                      // Parse the given code; this method will update the hashtable
-                     declaredClasses = parse(code, pathname,declaredClasses,nested,local);
+                     declaredClasses = parse(code, pathname,declaredClasses,nested,local,nestedrefs,localrefs,total);
 
                  }
              }
@@ -150,7 +152,7 @@ public class CountJavaTypes {
       }  
      
      //Parse method
-     public static List[] parse(String str, String pathname, List[] declaredClasses, List<String> nested, List<String> local) {
+     public static List[] parse(String str, String pathname, List[] declaredClasses, List<String> nested, List<String> local, List<String> nestedrefs, List<String> localrefs,List<String> total) {
          
          //Create AST Parser
             
@@ -190,14 +192,20 @@ public class CountJavaTypes {
                     
                     if (node.resolveBinding().isNested()) {
                     	nested.add(nodename);
-                    }else {
+                    }
+                    	
+                   if (node.resolveBinding().isLocal()) {
                     	local.add(nodename);
                     }
+                   
+                   total.add(nodename);
                     
                     updateTable(nodename, "Declaration");
                     
                     return true;                
-                }           
+                }
+                
+                
                 
                 //Visits annotations
                 public boolean visit(AnnotationTypeDeclaration node) {
@@ -208,9 +216,13 @@ public class CountJavaTypes {
                     
                     if (node.resolveBinding().isNested()) {
                     	nested.add(nodename);
-                    }else {
+                    }
+                   
+                    	if (node.resolveBinding().isLocal()) {
                     	local.add(nodename);
                     }
+                    	
+                    total.add(nodename);
                     
                     updateTable(nodename, "Declaration");
                     
@@ -226,9 +238,12 @@ public class CountJavaTypes {
                     
                     if (node.resolveBinding().isNested()) {
                     	nested.add(nodename);
-                    }else {
+                    }
+                    	if (node.resolveBinding().isLocal()) {
                     	local.add(nodename);
                     }
+                    	
+                    total.add(nodename);
                     
                     updateTable(nodename, "Declaration");
                     
@@ -245,6 +260,10 @@ public class CountJavaTypes {
                     		updateTable(nodename, "Reference");
                     }
                     
+                   
+                    
+                    
+                    
                     return true;
                 }
                 
@@ -255,6 +274,15 @@ public class CountJavaTypes {
                         
                         String nodename = node.resolveBinding().getQualifiedName();
                         updateTable(nodename, "Reference");
+                        
+                        if (node.resolveBinding().isNested()) {
+                        	nestedrefs.add(nodename);
+                        }
+                        
+                        if (node.resolveBinding().isLocal()) {
+                        	localrefs.add(nodename);
+                        }
+                        
                     }
                     
                     return false;
@@ -263,6 +291,7 @@ public class CountJavaTypes {
                 public boolean visit(AnonymousClassDeclaration node) {
                     
                     if (node.resolveBinding() != null) {
+                    	
 
                         // MAY NEED TO BE CHANGED!
                         // anonymous classes don't have names, obviously, which complicates counting
@@ -273,6 +302,15 @@ public class CountJavaTypes {
                         
                         updateTable("Anonymous", "Declaration");
                         //System.out.println("Anonymous");
+                        
+                        if (node.resolveBinding().isNested()) {
+                        	nested.add("Anonymous");
+                        }
+                        	if (node.resolveBinding().isLocal()) {
+                        	local.add("Anonymous");
+                        }
+                        	
+                        total.add("Anonymous");
         				
                         
                     }
@@ -285,8 +323,18 @@ public class CountJavaTypes {
                     
                     if (node.getArray().resolveTypeBinding() != null) {  
                     	String nodename = node.getArray().resolveTypeBinding().getQualifiedName();
+                    	
+                    	if (node.resolveTypeBinding().isNested()) {
+                        	nestedrefs.add(nodename);
+                        }
+                        	if (node.resolveTypeBinding().isLocal()) {
+                        	localrefs.add(nodename);
+                        }
+                        	
                     	updateTable(nodename, "Reference");
                     }
+                    
+                    
                         
                     
                     return false;
@@ -296,6 +344,9 @@ public class CountJavaTypes {
             
             declaredClasses[0] = nested;
             declaredClasses[1] = local;
+            declaredClasses[2] = nestedrefs;
+            declaredClasses[3] = localrefs;
+            declaredClasses[4] = total;
             
             return declaredClasses;
      }
@@ -341,9 +392,13 @@ public class CountJavaTypes {
          
          int nestedCount = 0;
          int localCount = 0;
+         int nestedRefCount = 0;
+         int localRefCount = 0;
          int anonymousCount = 0;
+         int totalCount = 0;
          int thisReferenceCount = 0;
          int otherReferenceCount = 0;
+         int totalReferenceCount = 0;
          
          while(elements.hasMoreElements()) {
              
@@ -359,6 +414,9 @@ public class CountJavaTypes {
              //Get list of with names of Listed and Local Types
              List<String>nested = declaredClasses[0];
              List<String>local = declaredClasses[1];
+             List<String>nestedrefs = declaredClasses[2];
+             List<String>localrefs = declaredClasses[4];
+             List<String>total = declaredClasses[4];
              
              
              //Look for Nested Type Declarations
@@ -367,36 +425,59 @@ public class CountJavaTypes {
             	 
              }
              
+           //Look for Nested References
+             if (nestedrefs.contains(s)) {
+            	 nestedRefCount++;
+            	 
+             }
+             
              //Look for Local Type Declarations
              if (local.contains(s)) {
             	 localCount++;
+             }
+             
+           //Look for Local References
+             if (localrefs.contains(s)) {
+            	 localRefCount++;
              }
              
              if (s == "Anonymous") {
             	 anonymousCount = a[0];
              }
              
+           //Look for all declarations
+             if (total.contains(s)) {
+            	 totalCount++;
+             }
+             
 
              
              //Look for # of references to local/nested types
-             if (a[0] != 0 && a[1] != 0) {
-            	 thisReferenceCount = thisReferenceCount + a[1];
-             }
+            // if (a[0] != 0 && a[1] != 0) {
+            //	 thisReferenceCount = thisReferenceCount + a[1];
+            // }
              
              
              //Look for # of references to other types
-             if (a[0] == 0 && a[1] != 0) {
-            	 otherReferenceCount = otherReferenceCount + a[1];
+             if (a[1] != 0) {
+            	 totalReferenceCount = totalReferenceCount + a[1];
              }
              
              
          }
+         
+         thisReferenceCount = localRefCount + nestedRefCount;
+         
+         otherReferenceCount = totalReferenceCount - thisReferenceCount;
+         
          //Print Results
          System.out.println("Nested Types Declared: " + nestedCount);
          System.out.println("Local Types Declared: " + localCount);
          System.out.println("Anonymous Types Declared: " + anonymousCount);
+         System.out.println("All Types Declared: " + totalCount);
          System.out.println("Local/Nested Types Referenced : " + thisReferenceCount);
          System.out.println("Other Types Referenced : " + otherReferenceCount);
+         System.out.println("Total Types Referenced : " + totalReferenceCount);
      }
      
 }
