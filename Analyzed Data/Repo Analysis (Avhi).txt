@@ -1,73 +1,97 @@
 Repo Name: Automon
-Nested Types Declared: 10
-Local Types Declared: 67
+Nested Types Declared: 11
+Local Types Declared: 1
 Anonymous Types Declared: 1
-Aforementioned Types Referenced: 31
-Other Types Referenced: 1117
+All Types Declared: 78
+Local/Nested Types Referenced : 89
+Other Types Referenced : 1059
+Total Types Referenced : 1148
+
 
 Repo Name: awesome-java-leetcode
-Nested Types Declared: 0
-Local Types Declared: 65
-Anonymous Types Declared: 1
-Aforementioned Types Referenced: 140
-Other Types Referenced: 1860
-(Note: Due to existence of foreign language symbols in the comments of some .java files, the commented line needed to be removed to run tool)
-(Files are the three inside: awesome-java-leetcode\src\com\blankj\structure)
+Nested Types Declared: 1
+Local Types Declared: 1
+Anonymous Types Declared: 2
+All Types Declared: 66
+Local/Nested Types Referenced : 66
+Other Types Referenced : 1934
+Total Types Referenced : 2000
+
 
 Repo Name: bootique
-Nested Types Declared: 179
-Local Types Declared: 221
+Nested Types Declared: 180
+Local Types Declared: 1
 Anonymous Types Declared: 42
-Aforementioned Types Referenced: 750
-Other Types Referenced: 3821
+All Types Declared: 401
+Local/Nested Types Referenced : 577
+Other Types Referenced : 3994
+Total Types Referenced : 4571
+
 
 Repo Name: Chronicle-Map
-Nested Types Declared: 127
-Local Types Declared: 380
+Nested Types Declared: 129
+Local Types Declared: 2
 Anonymous Types Declared: 39
-Aforementioned Types Referenced: 477
-Other Types Referenced: 19040
+All Types Declared: 508
+Local/Nested Types Referenced : 610
+Other Types Referenced : 18907
+Total Types Referenced : 19517
+
 
 Repo Name: gumshoe
-Nested Types Declared: 35
-Local Types Declared: 102
+Nested Types Declared: 36
+Local Types Declared: 1
 Anonymous Types Declared: 18
-Aforementioned Types Referenced: 156
-Other Types Referenced: 5185
+All Types Declared: 138
+Local/Nested Types Referenced : 179
+Other Types Referenced : 5162
+Total Types Referenced : 5341
+
 
 Repo Name: jvm-tools
-Nested Types Declared: 240
-Local Types Declared: 365
+Nested Types Declared: 241
+Local Types Declared: 1
 Anonymous Types Declared: 60
-Aforementioned Types Referenced: 1045
-Other Types Referenced: 20035
+All Types Declared: 606
+Local/Nested Types Referenced : 846
+Other Types Referenced : 20234
+Total Types Referenced : 21080
+
 
 Repo Name: leakcanary
-Nested Types Declared: 17
-Local Types Declared: 56
+Nested Types Declared: 18
+Local Types Declared: 1
 Anonymous Types Declared: 30
-Aforementioned Types Referenced: 110
-Other Types Referenced: 1226
+All Types Declared: 74
+Local/Nested Types Referenced : 94
+Other Types Referenced : 1242
+Total Types Referenced : 1336
 
 Repo Name: strman-java
-Nested Types Declared: 0
-Local Types Declared: 3
+Nested Types Declared: 1
+Local Types Declared: 1
 Anonymous Types Declared: 2
-Aforementioned Types Referenced: 0
-Other Types Referenced: 774
+All Types Declared: 4
+Local/Nested Types Referenced : 5
+Other Types Referenced : 769
+Total Types Referenced : 774
 
 
 Repo Name: tablesaw
 Nested Types Declared: 21
-Local Types Declared: 309
+Local Types Declared: 1
 Anonymous Types Declared: 46
-Aforementioned Types Referenced: 52
-Other Types Referenced: 9660
+All Types Declared: 329
+Local/Nested Types Referenced : 349
+Other Types Referenced : 9681
+Total Types Referenced : 10030
 
 
 Repo Name: XLearning
-Nested Types Declared: 14
-Local Types Declared: 50
+Nested Types Declared: 15
+Local Types Declared: 1
 Anonymous Types Declared: 25
-Aforementioned Types Referenced: 64
-Other Types Referenced: 2786
+All Types Declared: 65
+Local/Nested Types Referenced : 78
+Other Types Referenced : 2772
+Total Types Referenced : 2850
