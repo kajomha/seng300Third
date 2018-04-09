@@ -30,7 +30,8 @@ import org.eclipse.jdt.core.dom.TypeDeclaration;
 public class CountJavaTypes {
     
      public static Hashtable<String, int[]> table = new Hashtable<String, int[]>();
-
+     public static int[] allCount = new int[7];
+     
      public static void main(String[] args) throws IOException{
          
          // Store command line arguments
@@ -45,7 +46,7 @@ public class CountJavaTypes {
          List<String> localrefs = new ArrayList<>();
          List<String> total = new ArrayList<>();
          
-         //Print confirmations of receivedd input
+         //Print confirmations of received input
          System.out.println("You have selected the following directory:\n\t" + pathname + "\n");
          
          //Open the directory to read files from
@@ -382,6 +383,8 @@ public class CountJavaTypes {
          
      }
      
+     
+     
      // displays all of the information stored in our table
      
      public static void reportTable (List[] declaredClasses) {
@@ -469,6 +472,15 @@ public class CountJavaTypes {
          thisReferenceCount = localRefCount + nestedRefCount;
          
          otherReferenceCount = totalReferenceCount - thisReferenceCount;
+         
+         allCount[0] = nestedCount;
+         allCount[1] = localCount;
+         allCount[2] = anonymousCount;
+         allCount[3] = totalCount;
+         allCount[4] = thisReferenceCount;
+         allCount[5] = otherReferenceCount;
+         allCount[6] = totalReferenceCount;
+         
          
          //Print Results
          System.out.println("Nested Types Declared: " + nestedCount);
